@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Backoffice para Corretoras de Seguros | Coneccta</title>
+<meta name="description" content="A Coneccta oferece soluções de backoffice, sinistros e renovações para corretoras de seguros. Conheça nossa estrutura e fale com um especialista.">
+<link rel="canonical" href="https://www.coneccta.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Coneccta">
+<meta property="og:title" content="Backoffice para Corretoras de Seguros | Coneccta">
+<meta property="og:description" content="Sinistros, renovações e rotinas operacionais conduzidos por uma equipe especializada.">
+<meta property="og:url" content="https://www.coneccta.com.br/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#17171B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.coneccta.com.br/#org","name":"Coneccta","legalName":"CONECCTA VIRTUALE LTDA","taxID":"04.590.705/0001-67","url":"https://www.coneccta.com.br/","email":"coneccta@coneccta.com.br","telephone":"+55-41-3013-6968","slogan":"Inteligência e Controle para Corretores de Seguros.","address":{"@type":"PostalAddress","streetAddress":"R. Cruzeiro do Sul, 473 - Emiliano Perneta","addressLocality":"Pinhais","addressRegion":"PR","addressCountry":"BR"},"sameAs":["https://www.instagram.com/coneccta_virtuale","https://www.facebook.com/conecctav"]},{"@type":"WebSite","@id":"https://www.coneccta.com.br/#site","url":"https://www.coneccta.com.br/","name":"Coneccta","inLanguage":"pt-BR","publisher":{"@id":"https://www.coneccta.com.br/#org"}},{"@type":"WebPage","url":"https://www.coneccta.com.br/","name":"Backoffice para Corretoras de Seguros | Coneccta","inLanguage":"pt-BR","isPartOf":{"@id":"https://www.coneccta.com.br/#site"},"about":{"@id":"https://www.coneccta.com.br/#org"}},{"@type":"Service","name":"Central de Sinistros","serviceType":"Gestão de sinistros para corretoras de seguros","provider":{"@id":"https://www.coneccta.com.br/#org"},"areaServed":"BR"},{"@type":"Service","name":"Central de Renovações","serviceType":"Gestão de renovações de seguros","provider":{"@id":"https://www.coneccta.com.br/#org"},"areaServed":"BR"},{"@type":"Service","name":"Backoffice para Corretoras","serviceType":"Backoffice para corretoras de seguros","provider":{"@id":"https://www.coneccta.com.br/#org"},"areaServed":"BR"}]}</script>
+<style>
+html,body{margin:0;padding:0;background:#17171B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}
+body{font-family:'Manrope',system-ui,sans-serif;color:#17171B}
+a{color:#17171B;text-decoration:none}
+a:hover{color:#FA7921}
+:focus-visible{outline:2px solid #FA7921;outline-offset:3px;border-radius:4px}
+summary::-webkit-details-marker{display:none}
+::selection{background:#FA7921;color:#17171B}
+</style>
+</helmet>
+<div lang="pt-BR" style="font-family:'Manrope',system-ui,sans-serif;background:#FFFFFF;color:#17171B;overflow-x:clip">
+
+<a href="#main" style="position:absolute;left:-9999px;top:8px;z-index:100;background:#FA7921;color:#17171B;padding:10px 16px;border-radius:8px;font-weight:700" style-focus="left:16px">Pular para o conteúdo</a>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;height:72px;display:flex;align-items:center;background:{{ headerBg }};border-bottom:1px solid {{ headerLine }};backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:background .4s ease,border-color .4s ease">
+  <div style="width:100%;max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#inicio" onClick="{{ goHome }}" aria-label="Coneccta — voltar ao início" style="display:flex;align-items:center;flex-shrink:0">
+      <img src="assets/images/logo/coneccta-branca.png" alt="Coneccta" width="172" height="21" style="width:172px;height:auto;display:block">
+    </a>
+    <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Navegação principal" style="display:flex;align-items:center;gap:clamp(14px,1.6vw,28px)">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="8">
+          <a href="{{ item.href }}" onClick="{{ item.go }}" aria-current="{{ item.current }}" style="position:relative;font-size:14px;font-weight:600;letter-spacing:.01em;color:{{ item.color }};padding:8px 0;transition:color .25s" style-hover="color:#FFFFFF">{{ item.label }}<span aria-hidden="true" style="position:absolute;left:50%;bottom:0;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:#FA7921;opacity:{{ item.dot }};transition:opacity .3s"></span></a>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <div style="display:flex;align-items:center;gap:12px">
+      <sc-if value="{{ showHeaderCta }}" hint-placeholder-val="{{ true }}">
+        <a href="{{ wa.header.href }}" onClick="{{ wa.header.click }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;height:42px;padding:0 18px;border-radius:10px;background:#FA7921;color:#17171B;font-size:14px;font-weight:700;transition:background .25s,transform .25s" style-hover="background:#FF8B3D;color:#17171B;transform:translateY(-1px)">Fale com um especialista</a>
+      </sc-if>
+      <sc-if value="{{ isNotDesk }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpenStr }}" aria-controls="menu-mobile" aria-label="{{ menuLabel }}" style="width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;padding:0">
+          <span style="display:block;width:18px;height:1.5px;background:#FFFFFF;transition:transform .3s;transform:{{ bar1 }}"></span>
+          <span style="display:block;width:18px;height:1.5px;background:#FFFFFF;transition:transform .3s;transform:{{ bar2 }}"></span>
+        </button>
+      </sc-if>
+    </div>
+  </div>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div id="menu-mobile" role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;top:72px;left:0;right:0;bottom:0;z-index:49;background:#17171B;color:#FFFFFF;overflow-y:auto;padding:24px clamp(20px,5vw,40px) 40px;display:flex;flex-direction:column;gap:32px">
+    <nav aria-label="Navegação mobile" style="display:flex;flex-direction:column">
+      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="8">
+        <a href="{{ item.href }}" onClick="{{ item.go }}" style="display:flex;align-items:center;justify-content:space-between;min-height:58px;border-bottom:1px solid rgba(255,255,255,.1);font-size:26px;font-weight:700;letter-spacing:-.02em;color:{{ item.colorM }}">
+          <span>{{ item.label }}</span>
+          <span style="font-size:12px;font-weight:600;color:#71717A;letter-spacing:.08em">{{ item.n }}</span>
+        </a>
+      </sc-for>
+    </nav>
+    <a href="{{ wa.menu.href }}" onClick="{{ wa.menu.click }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:56px;border-radius:12px;background:#FA7921;color:#17171B;font-size:16px;font-weight:700">Fale com um especialista</a>
+    <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:#A1A1AA">
+      <span>{{ cfg.phone }}</span><span>{{ cfg.email }}</span><span>{{ cfg.city }}</span>
+    </div>
+  </div>
+</sc-if>
+
+<main id="main">
+
+<!-- 01 HERO -->
+<section id="inicio" data-screen-label="01 Hero" aria-labelledby="h1" style="position:relative;background:#17171B;color:#FFFFFF;padding:clamp(120px,14vh,168px) 0 0;overflow:hidden">
+  <svg aria-hidden="true" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" style="position:absolute;right:{{ heroSvgRight }};top:{{ heroSvgTop }};width:min(1100px,110vw);height:auto;opacity:{{ heroSvgOp }};pointer-events:none">
+    <path data-reveal="draw" data-hero="1" data-delay="500" data-dur="2600" pathLength="1" d="M453 171 A200 200 0 1 0 453 429" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="1"></path>
+    <path data-reveal="draw" data-hero="1" data-delay="800" data-dur="2600" pathLength="1" d="M713 171 A200 200 0 1 0 713 429" fill="none" stroke="#FA7921" stroke-opacity=".55" stroke-width="1"></path>
+    <path data-reveal="draw" data-hero="1" data-delay="1200" data-dur="2400" pathLength="1" d="M-40 470 C 180 470, 260 430, 453 429" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="1"></path>
+    <circle cx="453" cy="171" r="4" fill="#17171B" stroke="rgba(255,255,255,.4)"></circle>
+    <circle cx="453" cy="429" r="4" fill="#17171B" stroke="rgba(255,255,255,.4)"></circle>
+    <circle cx="713" cy="171" r="4" fill="#FA7921"></circle>
+    <circle cx="713" cy="429" r="4" fill="#FA7921"></circle>
+  </svg>
+  <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:{{ heroCols }};gap:clamp(40px,5vw,80px);align-items:end">
+    <div style="padding-bottom:clamp(48px,8vh,96px);min-width:0">
+      <p data-reveal="up" data-hero="1" data-delay="0" style="margin:0 0 28px;display:flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#A1A1AA">
+        <span aria-hidden="true" style="display:inline-block;width:28px;height:1px;background:#FA7921"></span>BACKOFFICE ESPECIALIZADO PARA CORRETORES DE SEGUROS
+      </p>
+      <h1 id="h1" data-reveal="up" data-hero="1" data-delay="120" style="margin:0;font-size:clamp(2.1rem,4.4vw,4.4rem);line-height:1.02;font-weight:800;letter-spacing:-.045em;text-wrap:balance">Sua corretora focada em <span style="color:#FA7921">crescer.</span> A operação fica com a gente.</h1>
+      <p data-reveal="up" data-hero="1" data-delay="260" style="margin:32px 0 0;max-width:560px;font-size:clamp(1.05rem,1.3vw,1.25rem);line-height:1.6;color:#C4C4CC;text-wrap:pretty">Conte com uma estrutura especializada em sinistros, renovações e backoffice para ganhar eficiência operacional e dedicar mais tempo aos seus clientes e negócios.</p>
+      <div data-reveal="up" data-hero="1" data-delay="400" style="margin-top:40px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="{{ wa.hero.href }}" onClick="{{ wa.hero.click }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 26px;border-radius:12px;background:#FA7921;color:#17171B;font-size:16px;font-weight:700;white-space:nowrap;transition:background .25s,transform .25s" style-hover="background:#FF8B3D;color:#17171B;transform:translateY(-2px)">Fale com um especialista <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <a href="#solucoes" onClick="{{ goSolucoes }}" style="display:inline-flex;align-items:center;height:56px;padding:0 24px;border-radius:12px;border:1px solid rgba(255,255,255,.24);color:#FFFFFF;font-size:16px;font-weight:600;white-space:nowrap;transition:border-color .25s,color .25s" style-hover="border-color:#FA7921;color:#FFFFFF">Conheça nossas soluções</a>
+      </div>
+    </div>
+    <div data-reveal="mask" data-hero="1" data-delay="550" data-dur="1400" style="position:relative;min-width:0;height:{{ heroImgH }};border-radius:clamp(120px,16vw,260px) 14px 0 0;overflow:hidden;background:#25252A">
+      <img src="assets/images/hero.png" alt="Equipe de backoffice da Coneccta" width="1600" height="2000" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block">
+    </div>
+  </div>
+  <div style="position:relative;border-top:1px solid rgba(255,255,255,.1)">
+    <div style="max-width:1440px;margin:0 auto;padding:20px clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;color:#A1A1AA">
+      <span style="color:#FFFFFF">Inteligência e Controle para Corretores de Seguros.</span>
+      <span style="display:flex;flex-wrap:wrap;gap:8px 24px"><span>Corretoras de Seguros</span><span>Seguradoras</span><span>Bancos</span><span>Cooperativas de Crédito</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 DORES -->
+<section id="dores" data-screen-label="02 Dores" aria-labelledby="h-dores" style="background:#FFFFFF;padding:clamp(96px,12vw,176px) 0 clamp(80px,10vw,144px)">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:{{ splitCols }};gap:clamp(48px,6vw,96px)">
+    <div style="min-width:0">
+      <div style="position:sticky;top:120px">
+        <p style="margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">O CENÁRIO</p>
+        <h2 id="h-dores" data-reveal="up" style="margin:0;font-size:clamp(2.1rem,3.8vw,4rem);line-height:1.04;font-weight:800;letter-spacing:-.04em;text-wrap:balance">Sua operação não deveria limitar o crescimento da sua corretora.</h2>
+        <p data-reveal="up" data-delay="120" style="margin:28px 0 0;max-width:460px;font-size:1.125rem;line-height:1.65;color:#52525B;text-wrap:pretty">Enquanto sua equipe administra pendências, renovações, sinistros e rotinas operacionais, oportunidades de relacionamento e novos negócios podem ficar em segundo plano.</p>
+      </div>
+    </div>
+    <div style="position:relative;padding-left:36px;min-width:0">
+    <span aria-hidden="true" data-reveal="growy" data-dur="1800" style="position:absolute;left:6px;top:14px;bottom:40px;width:1px;background:#E4E4E7;transform-origin:top"></span>
+    <ol style="list-style:none;margin:0;padding:0">
+
+      <sc-for list="{{ dores }}" as="d" hint-placeholder-count="3">
+        <li data-reveal="left" data-delay="{{ d.delay }}" style="position:relative;padding:0 0 clamp(48px,6vw,88px) {{ d.indent }}">
+          <span aria-hidden="true" style="position:absolute;left:-36px;top:20px;width:13px;height:13px;border-radius:50%;background:#FFFFFF;border:1.5px solid #FA7921"></span>
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 28px">
+            <span aria-hidden="true" style="font-size:clamp(3.5rem,6vw,6rem);line-height:.9;font-weight:800;letter-spacing:-.06em;color:#FA7921">{{ d.n }}</span>
+            <div style="flex:1 1 280px;max-width:520px">
+              <h3 style="margin:0 0 12px;font-size:clamp(1.4rem,2vw,1.9rem);font-weight:700;letter-spacing:-.025em;line-height:1.15">{{ d.t }}</h3>
+              <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#52525B">{{ d.p }}</p>
+            </div>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Transição" style="position:relative;background:#F3F4F6;padding:clamp(80px,10vw,150px) 0;overflow:hidden">
+  <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+    <p data-reveal="up" style="margin:0 auto;max-width:1180px;text-align:center;font-size:clamp(2rem,4.6vw,4.6rem);line-height:1.05;font-weight:800;letter-spacing:-.045em"><span style="color:#71717A;display:block">Você cuida dos relacionamentos.</span><span style="display:block">A Coneccta fortalece sua <span style="color:#FA7921">operação.</span></span></p>
+  </div>
+</section>
+
+<!-- 03 SOLUÇÕES -->
+<section id="solucoes" data-screen-label="03 Soluções" aria-labelledby="h-sol" style="background:#FFFFFF;padding:clamp(96px,11vw,168px) 0 clamp(80px,9vw,128px)">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+    <div style="display:flex;flex-wrap:wrap;gap:24px 64px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(48px,6vw,80px)">
+      <div style="flex:1 1 560px;max-width:860px">
+        <p style="margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">SOLUÇÕES CONECCTA</p>
+        <h2 id="h-sol" data-reveal="up" style="margin:0;font-size:clamp(2.1rem,3.8vw,4rem);line-height:1.04;font-weight:800;letter-spacing:-.04em;text-wrap:balance">Soluções que simplificam a operação e abrem espaço para crescer.</h2>
+      </div>
+      <p data-reveal="up" data-delay="120" style="flex:0 1 380px;margin:0;font-size:1.125rem;line-height:1.65;color:#52525B">Uma estrutura especializada para apoiar sua corretora nas atividades que exigem organização, continuidade e atenção.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:{{ solDir }};gap:16px">
+      <!-- Sinistros -->
+      <article onMouseEnter="{{ sol0 }}" onFocus="{{ sol0 }}" data-reveal="up" style="flex:{{ solFlex.0 }};min-width:0;min-height:{{ solMinH }};display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:clamp(28px,3vw,44px);border-radius:16px;background:#17171B;color:#FFFFFF;transition:flex .7s cubic-bezier(.2,.7,.2,1);overflow:hidden;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+          <span style="font-size:13px;font-weight:700;letter-spacing:.12em;color:#A1A1AA">01</span>
+          <svg aria-hidden="true" width="132" height="92" viewBox="0 0 132 92" fill="none" style="transition:transform 1s cubic-bezier(.2,.7,.2,1);transform:rotate({{ solRot }}deg)">
+            <path d="M72 18 A36 36 0 1 0 72 74" stroke="rgba(255,255,255,.35)" stroke-width="1.2"></path>
+            <path d="M118 18 A36 36 0 1 0 118 74" stroke="#FA7921" stroke-width="1.2"></path>
+            <circle cx="118" cy="18" r="3" fill="#FA7921"></circle><circle cx="118" cy="74" r="3" fill="#FA7921"></circle>
+          </svg>
+        </div>
+        <div style="max-width:520px">
+          <h3 style="margin:0 0 14px;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#FA7921">Central de Sinistros</h3>
+          <p style="margin:0 0 16px;font-size:clamp(1.6rem,2.4vw,2.4rem);line-height:1.08;font-weight:800;letter-spacing:-.035em">Suporte especializado quando mais importa.</p>
+          <p style="margin:0 0 28px;font-size:1rem;line-height:1.65;color:#C4C4CC">Acompanhamento de sinistros com processos organizados e suporte especializado, contribuindo para uma experiência de atendimento mais consistente.</p>
+          <a href="{{ wa.sinistros.href }}" onClick="{{ wa.sinistros.click }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:15px;font-weight:700;color:#FFFFFF;border-bottom:1px solid #FA7921" style-hover="color:#FA7921">Conversar sobre sinistros <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </div>
+      </article>
+      <!-- Renovações -->
+      <article onMouseEnter="{{ sol1 }}" onFocus="{{ sol1 }}" data-reveal="up" data-delay="100" style="flex:{{ solFlex.1 }};min-width:0;min-height:{{ solMinH }};display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:clamp(28px,3vw,44px);border-radius:16px;background:#F3F4F6;color:#17171B;transition:flex .7s cubic-bezier(.2,.7,.2,1);overflow:hidden">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+          <span style="font-size:13px;font-weight:700;letter-spacing:.12em;color:#71717A">02</span>
+          <svg aria-hidden="true" width="92" height="92" viewBox="0 0 92 92" fill="none">
+            <circle cx="46" cy="46" r="34" stroke="#D4D4D8" stroke-width="1.2"></circle>
+            <path pathLength="1" d="M46 12 A34 34 0 1 1 12 46" stroke="#FA7921" stroke-width="1.6" stroke-dasharray="1" style="stroke-dashoffset:{{ solDash }};transition:stroke-dashoffset 1.1s cubic-bezier(.2,.7,.2,1)"></path>
+            <path d="M6 40 L12 47 L18 40" stroke="#FA7921" stroke-width="1.6"></path>
+            <circle cx="46" cy="12" r="3" fill="#17171B"></circle>
+          </svg>
+        </div>
+        <div style="max-width:520px">
+          <h3 style="margin:0 0 14px;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#17171B">Central de Renovações</h3>
+          <p style="margin:0 0 16px;font-size:clamp(1.6rem,2.4vw,2.4rem);line-height:1.08;font-weight:800;letter-spacing:-.035em">Mais organização para proteger relacionamentos.</p>
+          <p style="margin:0 0 28px;font-size:1rem;line-height:1.65;color:#52525B">Apoio na gestão e no acompanhamento das renovações, ajudando sua corretora a manter a atenção à carteira e aos segurados.</p>
+          <a href="{{ wa.renovacoes.href }}" onClick="{{ wa.renovacoes.click }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:15px;font-weight:700;color:#17171B;border-bottom:1px solid #FA7921" style-hover="color:#C2560B">Conversar sobre renovações <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </div>
+      </article>
+      <!-- Backoffice -->
+      <article onMouseEnter="{{ sol2 }}" onFocus="{{ sol2 }}" data-reveal="up" data-delay="200" style="flex:{{ solFlex.2 }};min-width:0;min-height:{{ solMinH }};display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:clamp(28px,3vw,44px);border-radius:16px;background:#FFFFFF;border:1px solid #E4E4E7;color:#17171B;transition:flex .7s cubic-bezier(.2,.7,.2,1);overflow:hidden">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+          <span style="font-size:13px;font-weight:700;letter-spacing:.12em;color:#71717A">03</span>
+          <svg aria-hidden="true" width="108" height="76" viewBox="0 0 108 76" fill="none">
+            <path d="M10 10 H98 M10 38 H98 M10 66 H98 M10 10 V66 M39 10 V66 M68 10 V66 M98 10 V66" stroke="#E4E4E7" stroke-width="1"></path>
+            <sc-for list="{{ boNodes }}" as="b" hint-placeholder-count="12">
+              <circle cx="{{ b.x }}" cy="{{ b.y }}" r="4" style="fill:{{ b.fill }};stroke:{{ b.stroke }};stroke-width:1.2;transition:fill .4s ease {{ b.delay }}ms"></circle>
+            </sc-for>
+          </svg>
+        </div>
+        <div style="max-width:520px">
+          <h3 style="margin:0 0 14px;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#17171B">Backoffice para Corretoras</h3>
+          <p style="margin:0 0 16px;font-size:clamp(1.6rem,2.4vw,2.4rem);line-height:1.08;font-weight:800;letter-spacing:-.035em">Mais eficiência para sua rotina operacional.</p>
+          <p style="margin:0 0 28px;font-size:1rem;line-height:1.65;color:#52525B">Apoio especializado em cotações, atendimento, atividades administrativas e outras rotinas, conforme as necessidades da operação.</p>
+          <a href="{{ wa.backoffice.href }}" onClick="{{ wa.backoffice.click }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:15px;font-weight:700;color:#17171B;border-bottom:1px solid #FA7921" style-hover="color:#C2560B">Conhecer o backoffice <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </div>
+      </article>
+    </div>
+
+    <div style="margin-top:clamp(64px,8vw,112px);display:grid;grid-template-columns:{{ compCols }};gap:24px 64px">
+      <h3 style="margin:0;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">SOLUÇÕES COMPLEMENTARES</h3>
+      <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #E4E4E7">
+        <sc-for list="{{ complementares }}" as="c" hint-placeholder-count="4">
+          <li data-reveal="fade" data-delay="{{ c.delay }}" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 32px;padding:24px 0;border-bottom:1px solid #E4E4E7">
+            <span style="flex:0 0 clamp(200px,24vw,300px);font-size:1.25rem;font-weight:700;letter-spacing:-.02em">{{ c.t }}</span>
+            <span style="flex:1 1 280px;font-size:1rem;line-height:1.6;color:#52525B">{{ c.p }}</span>
+            <a href="{{ c.href }}" onClick="{{ c.click }}" target="{{ c.target }}" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:14px;font-weight:700;color:#17171B" style-hover="color:#C2560B">{{ c.cta }} <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 04 DIFERENCIAIS -->
+<section id="diferenciais" data-screen-label="04 Diferenciais" aria-labelledby="h-dif" style="background:#F3F4F6;padding:clamp(96px,11vw,168px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+    <p style="margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">POR QUE ESCOLHER A CONECCTA?</p>
+    <h2 id="h-dif" data-reveal="up" style="margin:0 0 clamp(48px,6vw,80px);max-width:900px;font-size:clamp(2.1rem,3.8vw,4rem);line-height:1.04;font-weight:800;letter-spacing:-.04em;text-wrap:balance">Uma estrutura especializada por trás de cada operação.</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:16px">
+      <div data-reveal="up" style="flex:1 1 560px;min-height:clamp(300px,30vw,400px);padding:clamp(28px,3.4vw,52px);border-radius:16px;background:#17171B;color:#FFFFFF;display:flex;flex-direction:column;justify-content:space-between;gap:48px;position:relative;overflow:hidden">
+        <svg aria-hidden="true" viewBox="0 0 400 400" style="position:absolute;right:-90px;bottom:-110px;width:380px;height:380px" fill="none"><path d="M290 70 A160 160 0 1 0 290 330" stroke="rgba(255,255,255,.1)"></path><circle cx="290" cy="70" r="4" fill="#FA7921"></circle><circle cx="290" cy="330" r="4" fill="#FA7921"></circle></svg>
+        <svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FA7921" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 8-7.5 9.5-4.4-1.5-7.5-5.1-7.5-9.5V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg>
+        <div style="position:relative;max-width:520px">
+          <h3 style="margin:0 0 14px;font-size:clamp(1.8rem,2.8vw,2.8rem);line-height:1.04;font-weight:800;letter-spacing:-.035em">Especialização no mercado de seguros</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#C4C4CC">Conhecimento das rotinas e necessidades operacionais do segmento.</p>
+        </div>
+      </div>
+      <div data-reveal="up" data-delay="90" style="flex:1 1 380px;padding:clamp(28px,3vw,44px);border-radius:16px;background:#FFFFFF;display:flex;flex-direction:column;justify-content:space-between;gap:48px">
+        <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FA7921" stroke-width="1.4" stroke-linecap="round"><circle cx="8.5" cy="8" r="3"></circle><circle cx="16.5" cy="9.5" r="2.4"></circle><path d="M3 19c.6-3 2.8-5 5.5-5s4.9 2 5.5 5"></path><path d="M14.5 14.6c.6-.3 1.3-.5 2-.5 2.2 0 3.9 1.7 4.5 4.4"></path></svg>
+        <div><h3 style="margin:0 0 12px;font-size:1.6rem;font-weight:800;letter-spacing:-.03em;line-height:1.1">Equipe preparada</h3><p style="margin:0;font-size:1rem;line-height:1.6;color:#52525B">Profissionais e processos voltados ao suporte das atividades realizadas.</p></div>
+      </div>
+      <div data-reveal="up" data-delay="160" style="flex:1 1 300px;padding:clamp(28px,3vw,40px);border-radius:16px;background:#FFFFFF;display:flex;flex-direction:column;gap:40px">
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FA7921" stroke-width="1.4" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="17" r="2"></circle></svg>
+        <div><h3 style="margin:0 0 10px;font-size:1.3rem;font-weight:700;letter-spacing:-.02em">Soluções sob medida</h3><p style="margin:0;font-size:1rem;line-height:1.6;color:#52525B">Atendimento a corretoras de diferentes portes e necessidades.</p></div>
+      </div>
+      <div data-reveal="up" data-delay="220" style="flex:1 1 300px;padding:clamp(28px,3vw,40px);border-radius:16px;background:#FFFFFF;display:flex;flex-direction:column;gap:40px">
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FA7921" stroke-width="1.4" stroke-linecap="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8M12 16v4M7 12l3-3 2.5 2L17 7"></path></svg>
+        <div><h3 style="margin:0 0 10px;font-size:1.3rem;font-weight:700;letter-spacing:-.02em">Tecnologia e controle</h3><p style="margin:0;font-size:1rem;line-height:1.6;color:#52525B">Ferramentas e processos que contribuem para o acompanhamento das atividades.</p></div>
+      </div>
+      <div data-reveal="up" data-delay="280" style="flex:1 1 300px;padding:clamp(28px,3vw,40px);border-radius:16px;border:1px solid #D4D4D8;display:flex;flex-direction:column;gap:40px">
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FA7921" stroke-width="1.4" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"></path><path d="M20 4v4h-4"></path></svg>
+        <div><h3 style="margin:0 0 10px;font-size:1.3rem;font-weight:700;letter-spacing:-.02em">Continuidade operacional</h3><p style="margin:0;font-size:1rem;line-height:1.6;color:#52525B">Estrutura e práticas voltadas à manutenção das operações.</p></div>
+      </div>
+      <div data-reveal="up" data-delay="340" style="flex:2 1 560px;padding:clamp(28px,3.4vw,48px);border-radius:16px;background:#FFFFFF;border-top:3px solid #FA7921;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 48px">
+        <h3 style="margin:0;flex:1 1 280px;font-size:clamp(1.8rem,2.8vw,2.8rem);line-height:1.04;font-weight:800;letter-spacing:-.035em">Mais foco no negócio</h3>
+        <p style="margin:0;flex:1 1 280px;max-width:420px;font-size:1.0625rem;line-height:1.6;color:#52525B">Apoio para que a corretora concentre esforços no relacionamento e na expansão comercial.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 COMO FUNCIONA -->
+<section id="como-funciona" data-screen-label="05 Como funciona" aria-labelledby="h-como" style="background:#FFFFFF;padding:clamp(96px,11vw,168px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 64px;margin-bottom:clamp(56px,7vw,96px)">
+      <div style="flex:1 1 520px;max-width:820px">
+        <p style="margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">COMO FUNCIONA</p>
+        <h2 id="h-como" data-reveal="up" style="margin:0;font-size:clamp(2.1rem,3.8vw,4rem);line-height:1.04;font-weight:800;letter-spacing:-.04em;text-wrap:balance">Da sua necessidade à operação integrada.</h2>
+      </div>
+    </div>
+    <div id="proc-track" style="position:relative">
+      <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="position:absolute;left:0;right:0;top:14px;height:1px;background:#E4E4E7"></div>
+        <div aria-hidden="true" style="position:absolute;left:0;right:0;top:14px;height:1px;background:#FA7921;transform-origin:left;transform:scaleX({{ procP }});transition:transform .15s linear"></div>
+      </sc-if>
+      <sc-if value="{{ isNotDesk }}" hint-placeholder-val="{{ false }}">
+        <div aria-hidden="true" style="position:absolute;left:14px;top:0;bottom:0;width:1px;background:#E4E4E7"></div>
+        <div aria-hidden="true" style="position:absolute;left:14px;top:0;bottom:0;width:1px;background:#FA7921;transform-origin:top;transform:scaleY({{ procP }});transition:transform .15s linear"></div>
+      </sc-if>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:{{ procCols }};gap:{{ procGap }}">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <li style="position:relative;padding:{{ procPad }};min-width:0">
+            <span aria-hidden="true" style="position:absolute;left:0;top:0;width:29px;height:29px;border-radius:50%;background:{{ s.bg }};border:1.5px solid {{ s.border }};display:flex;align-items:center;justify-content:center;transition:background .4s,border-color .4s"><span style="width:7px;height:7px;border-radius:50%;background:{{ s.dot }};transition:background .4s"></span></span>
+            <span style="display:block;margin-bottom:16px;font-size:13px;font-weight:700;letter-spacing:.12em;color:{{ s.numColor }};transition:color .4s">{{ s.n }}</span>
+            <h3 style="margin:0 0 12px;font-size:clamp(1.35rem,1.8vw,1.65rem);font-weight:800;letter-spacing:-.025em;line-height:1.15">{{ s.t }}</h3>
+            <p style="margin:0;max-width:320px;font-size:1rem;line-height:1.65;color:#52525B">{{ s.p }}</p>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ESTRUTURA -->
+<section id="estrutura" data-screen-label="06 Estrutura" aria-labelledby="h-est" style="background:#17171B;color:#FFFFFF;padding:clamp(96px,11vw,168px) 0;position:relative;overflow:hidden">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+    <div style="display:grid;grid-template-columns:{{ splitCols }};gap:clamp(40px,6vw,96px);align-items:end;margin-bottom:clamp(56px,7vw,96px)">
+      <div style="min-width:0">
+        <p style="margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#A1A1AA">ESTRUTURA, TECNOLOGIA E SEGURANÇA</p>
+        <h2 id="h-est" data-reveal="up" style="margin:0;font-size:clamp(2.1rem,3.8vw,4rem);line-height:1.04;font-weight:800;letter-spacing:-.04em;text-wrap:balance">Estrutura para acompanhar o ritmo da sua <span style="color:#FA7921">operação.</span></h2>
+        <p data-reveal="up" data-delay="100" style="margin:28px 0 0;max-width:500px;font-size:1.125rem;line-height:1.65;color:#C4C4CC">Tecnologia, processos organizados e estrutura operacional para apoiar atividades que exigem continuidade, acompanhamento e segurança.</p>
+      </div>
+      <ul aria-label="Recursos da estrutura" style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.12);min-width:0">
+        <sc-for list="{{ recursos }}" as="r" hint-placeholder-count="5">
+          <li data-reveal="fade" data-delay="{{ r.delay }}" style="display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:15px;font-weight:500;color:#E4E4E7">
+            <span aria-hidden="true" style="flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#FA7921;box-shadow:0 0 0 4px rgba(250,121,33,.16)"></span>
+            <span style="flex:1">{{ r.t }}</span>
+            <span style="font-size:11px;font-weight:700;letter-spacing:.14em;color:#71717A">{{ r.tag }}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+
+    <div style="display:grid;grid-template-columns:{{ mosaicCols }};grid-template-rows:{{ mosaicRows }};gap:16px">
+      <figure data-reveal="mask" style="margin:0;grid-row:{{ mosaicSpan }};position:relative;border-radius:16px;overflow:hidden;background:#25252A;min-height:320px">
+        <img src="assets/images/pessoas.jpg" alt="Equipe da Coneccta trabalhando na operação" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:48% 62%;display:block">
+        <figcaption style="position:absolute;left:16px;bottom:16px;padding:6px 12px;border-radius:999px;background:rgba(23,23,27,.82);font-size:12px;font-weight:600;color:#FFFFFF;pointer-events:none">Equipe e departamentos estruturados</figcaption>
+      </figure>
+      <figure data-reveal="maskx" data-delay="150" style="margin:0;position:relative;border-radius:16px;overflow:hidden;background:#25252A;min-height:240px">
+        <img src="assets/images/servidores.png" alt="Servidores e sistemas" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:35% 50%;transform:scale(1.14);transform-origin:35% 50%;display:block">
+        <figcaption style="position:absolute;left:16px;bottom:16px;padding:6px 12px;border-radius:999px;background:rgba(23,23,27,.82);font-size:12px;font-weight:600;color:#FFFFFF;pointer-events:none">Servidores e sistemas</figcaption>
+      </figure>
+      <figure data-reveal="maskx" data-delay="300" style="margin:0;position:relative;border-radius:16px;overflow:hidden;background:#25252A;min-height:240px">
+        <img src="assets/images/elemento.png" alt="Gerador de energia para contingência operacional" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;transform:scale(1.14);transform-origin:60% 50%;display:block">
+        <figcaption style="position:absolute;left:16px;bottom:16px;padding:6px 12px;border-radius:999px;background:rgba(23,23,27,.82);font-size:12px;font-weight:600;color:#FFFFFF;pointer-events:none">Contingência operacional</figcaption>
+      </figure>
+    </div>
+
+    <div style="margin-top:clamp(56px,7vw,96px);display:flex;flex-wrap:wrap;gap:48px clamp(40px,6vw,96px)">
+      <div data-reveal="up" style="flex:1 1 400px">
+        <h3 style="margin:0 0 24px;font-size:clamp(1.4rem,2vw,1.9rem);font-weight:800;letter-spacing:-.025em;line-height:1.15">Gestão e controle são fundamentais para o alcance dos resultados.</h3>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ gestao }}" as="g" hint-placeholder-count="4">
+            <li style="display:flex;gap:14px;font-size:1rem;line-height:1.6;color:#C4C4CC"><span aria-hidden="true" style="flex:0 0 14px;height:1px;margin-top:13px;background:#FA7921"></span>{{ g }}</li>
+          </sc-for>
+        </ul>
+      </div>
+      <div data-reveal="up" data-delay="120" style="flex:1 1 400px">
+        <h3 style="margin:0 0 24px;font-size:clamp(1.4rem,2vw,1.9rem);font-weight:800;letter-spacing:-.025em;line-height:1.15">BCP: Plano de Continuidade de Negócios. As operações não podem parar.</h3>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ bcp }}" as="g" hint-placeholder-count="4">
+            <li style="display:flex;gap:14px;font-size:1rem;line-height:1.6;color:#C4C4CC"><span aria-hidden="true" style="flex:0 0 14px;height:1px;margin-top:13px;background:#FA7921"></span>{{ g }}</li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+
+    <div data-reveal="mask" role="button" tabindex="0" aria-label="Reproduzir vídeo institucional da Coneccta" onclick="if(this.dataset.on)return;this.dataset.on=1;this.innerHTML='<iframe src=&quot;https://www.youtube.com/embed/x4qwo7EGNnc?autoplay=1&amp;rel=0&quot; title=&quot;Vídeo institucional da Coneccta&quot; allow=&quot;autoplay; encrypted-media; picture-in-picture; fullscreen&quot; allowfullscreen style=&quot;position:absolute;inset:0;width:100%;height:100%;border:0&quot;></iframe>';this.style.cursor='default'" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" style="margin-top:clamp(64px,8vw,112px);position:relative;aspect-ratio:{{ videoRatio }};border-radius:20px;overflow:hidden;background:#25252A;cursor:pointer">
+      <img src="https://i.ytimg.com/vi/x4qwo7EGNnc/maxresdefault.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,23,27,.78) 0%,rgba(23,23,27,.2) 60%,rgba(23,23,27,0) 100%);pointer-events:none"></div>
+      <div style="position:absolute;left:clamp(20px,4vw,56px);bottom:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;pointer-events:none">
+        <button type="button" onClick="{{ openVideo }}" aria-label="Assistir ao vídeo institucional da Coneccta" style="pointer-events:auto;width:clamp(64px,7vw,88px);height:clamp(64px,7vw,88px);border-radius:50%;border:0;background:#FA7921;color:#17171B;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s" style-hover="transform:scale(1.06)"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"></path></svg></button>
+        <div>
+          <p style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FA7921">VÍDEO INSTITUCIONAL</p>
+          <p style="margin:0;font-size:clamp(1.2rem,2vw,1.8rem);font-weight:800;letter-spacing:-.025em;color:#FFFFFF">Conheça a estrutura da Coneccta por dentro.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:32px">
+      <a href="{{ wa.estrutura.href }}" onClick="{{ wa.estrutura.click }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:15px;font-weight:700;color:#FFFFFF;border-bottom:1px solid #FA7921" style-hover="color:#FA7921">Conversar sobre nossa estrutura <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+  </div>
+</section>
+
+<sc-if value="{{ videoOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Vídeo institucional" onClick="{{ closeVideo }}" style="position:fixed;inset:0;z-index:80;background:rgba(12,12,14,.92);display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,64px)">
+    <div onClick="{{ stop }}" style="position:relative;width:100%;max-width:1200px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#25252A;display:flex;align-items:center;justify-content:center">
+      <sc-if value="{{ videoOk }}" hint-placeholder-val="{{ true }}">
+        <video controls="" playsInline="" preload="metadata" onError="{{ videoFail }}" onPlay="{{ videoPlay }}" style="width:100%;height:100%;display:block;background:#000">
+          <source src="assets/videos/institucional-coneccta.mp4" type="video/mp4" onError="{{ videoFail }}"></source>
+        </video>
+      </sc-if>
+      <sc-if value="{{ videoErr }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:32px;color:#FFFFFF">
+          <p style="margin:0 0 8px;font-size:1.5rem;font-weight:800;letter-spacing:-.02em">Vídeo institucional em breve.</p>
+          <p style="margin:0;font-size:14px;color:#A1A1AA">Arquivo esperado: assets/videos/institucional-coneccta.mp4</p>
+        </div>
+      </sc-if>
+      <button type="button" onClick="{{ closeVideo }}" aria-label="Fechar vídeo" style="position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(23,23,27,.8);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+    </div>
+  </div>
+</sc-if>
+
+<!-- 07 SOBRE -->
+<section id="sobre" data-screen-label="07 Sobre" aria-labelledby="h-sobre" style="background:#FFFFFF;padding:clamp(96px,11vw,168px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:{{ sobreCols }};gap:clamp(40px,5vw,80px);align-items:center">
+    <div data-reveal="mask" style="position:relative;aspect-ratio:16/9;border-radius:14px 14px 14px clamp(120px,14vw,240px);overflow:hidden;background:#17171B;min-width:0">
+      <video src="assets/images/clip.mp4" data-autoplay="1" autoplay muted loop playsinline preload="auto" aria-label="Profissionais da Coneccta em atividade" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
+      <div style="position:absolute;right:16px;bottom:16px;display:flex;gap:10px">
+        <button type="button" data-vid-toggle aria-label="Pausar vídeo" style="width:48px;height:48px;border-radius:50%;border:0;background:#FA7921;color:#17171B;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35)">
+          <svg data-ic-pause width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg>
+          <svg data-ic-play width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"></path></svg>
+        </button>
+        <button type="button" data-vid-sound aria-label="Ativar som" style="width:48px;height:48px;border-radius:50%;border:0;background:rgba(23,23,27,.82);color:#FFFFFF;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35)">
+          <svg data-ic-muted width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"></path><path d="M22 9l-6 6M16 9l6 6"></path></svg>
+          <svg data-ic-sound width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"></path><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"></path></svg>
+        </button>
+      </div>
+    </div>
+    <div style="min-width:0;display:flex;flex-direction:column;justify-content:center">
+      <p style="margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">SOBRE A CONECCTA</p>
+      <h2 id="h-sobre" data-reveal="up" style="margin:0;font-size:clamp(1.9rem,2.7vw,2.9rem);line-height:1.08;font-weight:800;letter-spacing:-.04em;text-wrap:balance">Por trás de operações eficientes, existem pessoas preparadas.</h2>
+      <div data-reveal="up" data-delay="120" style="margin-top:24px;display:flex;flex-direction:column;gap:16px;max-width:520px;font-size:1.0625rem;line-height:1.7;color:#52525B">
+        <p style="margin:0">A Coneccta atua no suporte a operações do mercado de seguros, combinando equipes especializadas, processos estruturados e tecnologia para atender demandas de diferentes perfis de negócio.</p>      </div>
+      <div data-reveal="up" data-delay="220" style="margin-top:36px;padding-top:24px;border-top:1px solid #E4E4E7">
+        <h3 style="margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">SETORES EM QUE SOMOS ESPECIALISTAS</h3>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px 24px">
+          <sc-for list="{{ setores }}" as="st" hint-placeholder-count="4">
+            <li style="display:flex;align-items:center;gap:12px;font-size:1.0625rem;font-weight:700"><span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;border:1.5px solid #FA7921"></span>{{ st }}</li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 CONECCTONE -->
+<section id="conecctone" data-screen-label="08 CONECCTONE" aria-labelledby="h-one" style="background:#F3F4F6;padding:clamp(96px,11vw,160px) 0;overflow:hidden">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:{{ oneCols }};gap:clamp(48px,6vw,96px);align-items:center">
+    <div style="min-width:0">
+      <p data-reveal="fade" aria-hidden="true" style="margin:0 0 28px;font-size:clamp(2.6rem,5.6vw,5.4rem);line-height:.9;font-weight:800;letter-spacing:-.05em;color:#17171B">CONECCT<span style="color:#FA7921">ONE</span></p>
+      <h2 id="h-one" data-reveal="up" style="margin:0;font-size:clamp(1.7rem,2.6vw,2.6rem);line-height:1.1;font-weight:800;letter-spacing:-.03em">Tecnologia que acompanha a operação.</h2>
+      <p data-reveal="up" data-delay="100" style="margin:20px 0 36px;max-width:480px;font-size:1.125rem;line-height:1.65;color:#52525B">A CONECCTONE faz parte do ecossistema tecnológico da Coneccta, ao lado das equipes e dos processos que conduzem as rotinas operacionais dos nossos clientes.</p>
+      <a href="#solucoes" onClick="{{ goSolucoes }}" style="display:inline-flex;align-items:center;height:52px;padding:0 24px;border-radius:12px;background:#17171B;color:#FFFFFF;font-size:15px;font-weight:700;transition:background .25s" style-hover="background:#25252A;color:#FFFFFF">Conheça nossas soluções</a>
+    </div>
+    <div data-reveal="maskx" style="position:relative;min-width:0;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#17171B;border:1px solid #E4E4E7;box-shadow:0 40px 80px -40px rgba(23,23,27,.25)">
+      <img src="assets/images/dash.png" alt="Interface do CONECCTONE: dashboard com sinistros, renovações, desempenho mensal e processos recentes" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+  </div>
+</section>
+
+<!-- 09 CLIENTES -->
+<section id="clientes" data-screen-label="09 Clientes" aria-labelledby="h-cli" style="background:#FFFFFF;padding:clamp(96px,11vw,160px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;margin-bottom:clamp(40px,5vw,64px)">
+      <h2 id="h-cli" data-reveal="up" style="margin:0;flex:1 1 480px;font-size:clamp(2.1rem,3.8vw,4rem);line-height:1.04;font-weight:800;letter-spacing:-.04em">Confiança construída na operação.</h2>
+      <p data-reveal="up" data-delay="100" style="margin:0;flex:0 1 380px;font-size:1.125rem;line-height:1.65;color:#52525B">Conheça algumas das empresas que fazem parte da trajetória da Coneccta.</p>
+    </div>
+    <ul aria-label="Clientes" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(140px,14vw,200px),1fr));border-top:1px solid #E4E4E7;border-left:1px solid #E4E4E7">
+      <sc-for list="{{ clientes }}" as="cl" hint-placeholder-count="17">
+        <li data-reveal="fade" data-delay="{{ cl.delay }}" style="display:flex;align-items:center;justify-content:center;height:clamp(96px,9vw,128px);padding:20px;border-right:1px solid #E4E4E7;border-bottom:1px solid #E4E4E7">
+          <img src="{{ cl.src }}" alt="{{ cl.alt }}" loading="lazy" decoding="async" width="160" height="60" style="max-width:78%;max-height:56px;width:auto;height:auto;object-fit:contain">
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+
+<!-- FAQ -->
+<sc-if value="{{ showFaq }}" hint-placeholder-val="{{ true }}">
+<section id="faq" data-screen-label="11 FAQ" aria-labelledby="h-faq" style="background:#F3F4F6;padding:clamp(96px,11vw,160px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:{{ splitCols }};gap:clamp(40px,6vw,96px)">
+    <div style="min-width:0">
+      <p style="margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">PERGUNTAS FREQUENTES</p>
+      <h2 id="h-faq" data-reveal="up" style="margin:0;font-size:clamp(2rem,3.2vw,3.2rem);line-height:1.06;font-weight:800;letter-spacing:-.04em;text-wrap:balance">Dúvidas comuns sobre backoffice para corretoras de seguros.</h2>
+    </div>
+    <div style="border-top:1px solid #E4E4E7;min-width:0">
+      <sc-for list="{{ faq }}" as="f" hint-placeholder-count="6">
+        <details style="border-bottom:1px solid #E4E4E7">
+          <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;padding:18px 0;font-size:clamp(1.05rem,1.4vw,1.25rem);font-weight:700;letter-spacing:-.015em">
+            <span>{{ f.q }}</span>
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA7921" stroke-width="1.8" style="flex:0 0 auto"><path d="M12 5v14M5 12h14"></path></svg>
+          </summary>
+          <p style="margin:0;padding:0 48px 28px 0;font-size:1.0625rem;line-height:1.7;color:#52525B">{{ f.a }}</p>
+        </details>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- CTA FINAL -->
+<section id="contato" data-screen-label="12 CTA final" aria-labelledby="h-cta" style="position:relative;background:#17171B;color:#FFFFFF;padding:clamp(104px,12vw,184px) 0;overflow:hidden">
+  <svg aria-hidden="true" viewBox="0 0 900 600" fill="none" style="position:absolute;right:-8%;top:50%;transform:translateY(-50%);width:min(980px,120vw);height:auto;pointer-events:none">
+    <path data-reveal="draw" data-dur="2400" pathLength="1" d="M384 104 A230 230 0 1 0 384 496" stroke="rgba(255,255,255,.12)" stroke-width="1"></path>
+    <path data-reveal="draw" data-delay="300" data-dur="2400" pathLength="1" d="M684 104 A230 230 0 1 0 684 496" stroke="#FA7921" stroke-width="1.2"></path>
+    <path data-reveal="draw" data-delay="900" data-dur="2000" pathLength="1" d="M384 104 C 470 60, 600 60, 684 104" stroke="rgba(250,121,33,.4)" stroke-width="1"></path>
+    <circle cx="384" cy="104" r="5" fill="#17171B" stroke="#FA7921"></circle><circle cx="384" cy="496" r="5" fill="#17171B" stroke="#FA7921"></circle>
+    <circle cx="684" cy="104" r="5" fill="#FA7921"></circle><circle cx="684" cy="496" r="5" fill="#FA7921"></circle>
+  </svg>
+  <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+    <h2 id="h-cta" data-reveal="up" style="margin:0;max-width:1060px;font-size:clamp(2.4rem,5.4vw,5.6rem);line-height:1;font-weight:800;letter-spacing:-.045em;text-wrap:balance">Sua próxima etapa de crescimento começa com uma operação mais <span style="color:#FA7921">inteligente.</span></h2>
+    <div style="margin-top:48px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:32px 64px">
+      <p data-reveal="up" data-delay="120" style="margin:0;flex:0 1 460px;font-size:1.125rem;line-height:1.65;color:#C4C4CC">Descubra como a Coneccta pode apoiar as atividades da sua corretora com soluções especializadas e adaptadas às suas necessidades.</p>
+      <div data-reveal="up" data-delay="220" style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px">
+        <a href="{{ wa.final.href }}" onClick="{{ wa.final.click }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;height:60px;padding:0 30px;border-radius:12px;background:#FA7921;color:#17171B;font-size:17px;font-weight:700;transition:background .25s,transform .25s" style-hover="background:#FF8B3D;color:#17171B;transform:translateY(-2px)">Converse com um especialista <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <a href="{{ cfg.tel }}" style="font-size:15px;font-weight:600;color:#C4C4CC;min-height:44px;display:inline-flex;align-items:center" style-hover="color:#FFFFFF">{{ phoneCta }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer data-screen-label="13 Rodapé" style="background:#111114;color:#C4C4CC;padding:clamp(72px,8vw,112px) 0 32px">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+    <div style="display:flex;flex-wrap:wrap;gap:48px clamp(40px,5vw,80px);padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.1)">
+      <div style="flex:1.4 1 300px;display:flex;flex-direction:column;gap:20px">
+        <img src="assets/images/logo/coneccta-branca.png" alt="Coneccta" width="200" height="25" loading="lazy" style="width:200px;height:auto;display:block">
+        <p style="margin:0;max-width:320px;font-size:1.125rem;line-height:1.5;font-weight:700;color:#FFFFFF;letter-spacing:-.01em">Inteligência e Controle para Corretores de Seguros.</p>
+      </div>
+      <nav aria-label="Rodapé" style="flex:1 1 180px">
+        <h2 style="margin:0 0 18px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">NAVEGAÇÃO</h2>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px">
+          <sc-for list="{{ nav }}" as="item" hint-placeholder-count="8">
+            <li><a href="{{ item.href }}" onClick="{{ item.go }}" style="font-size:15px;color:#C4C4CC" style-hover="color:#FFFFFF">{{ item.label }}</a></li>
+          </sc-for>
+        </ul>
+      </nav>
+      <div style="flex:1 1 260px">
+        <h2 style="margin:0 0 18px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">CONTATO</h2>
+        <address style="font-style:normal;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.5">
+          <a href="{{ wa.footer.href }}" onClick="{{ wa.footer.click }}" target="_blank" rel="noopener" style="color:#FFFFFF;font-weight:700" style-hover="color:#FA7921">Fale com um especialista</a>
+          <a href="{{ cfg.tel }}" style="color:#C4C4CC" style-hover="color:#FFFFFF">{{ cfg.phone }}</a>
+          <a href="{{ cfg.mailto }}" style="color:#C4C4CC" style-hover="color:#FFFFFF">{{ cfg.email }}</a>
+          <span>{{ cfg.address }}</span>
+        </address>
+      </div>
+      <div style="flex:1 1 160px">
+        <h2 style="margin:0 0 18px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">REDES</h2>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15px">
+          <li><a href="https://www.instagram.com/coneccta_virtuale" target="_blank" rel="noopener" style="color:#C4C4CC" style-hover="color:#FFFFFF">Instagram</a></li>
+          <li><a href="https://www.facebook.com/conecctav" target="_blank" rel="noopener" style="color:#C4C4CC" style-hover="color:#FFFFFF">Facebook</a></li>
+          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSc2D4iEuvpXHR8pjPGod9RyMmQmKJJkyoxG1mwRe2_tRxkFpg/viewform" target="_blank" rel="noopener" style="color:#C4C4CC" style-hover="color:#FFFFFF">Trabalhe conosco</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:13px;color:#8A8A93">
+      <span>CONECCTA VIRTUALE LTDA · CNPJ 04.590.705/0001-67</span>
+      <span>Política de privacidade (em preparação)</span>
+      <span>©{{ year }}, Coneccta. Todos os direitos reservados.</span>
+      <span>Desenvolvido por SaluDigital®</span>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ fab }}" hint-placeholder-val="{{ false }}">
+  <a href="{{ wa.fab.href }}" onClick="{{ wa.fab.click }}" target="_blank" rel="noopener" aria-label="Conversar pelo WhatsApp" style="position:fixed;right:clamp(16px,2.4vw,32px);bottom:clamp(16px,2.4vw,32px);z-index:40;width:56px;height:56px;border-radius:50%;background:#17171B;border:1px solid rgba(250,121,33,.5);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -10px rgba(0,0,0,.5);transition:transform .25s,border-color .25s" style-hover="transform:translateY(-2px);border-color:#FA7921">
+    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FA7921" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"></path><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-1.8-.9-.8.8a4 4 0 0 1-2.1-2.1l.8-.8-.9-1.8z"></path></svg>
+  </a>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Conversão&quot;},&quot;gtmId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Analytics&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Experiência&quot;},&quot;showFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Experiência&quot;}}">
+const CONFIG = {
+  phone: '41 3013-6968',
+  tel: 'tel:+554130136968',
+  email: 'coneccta@coneccta.com.br',
+  address: 'R. Cruzeiro do Sul, 473 · Emiliano Perneta · Pinhais, PR',
+  city: 'Pinhais · PR',
+};
+const MSG = {
+  geral: 'Olá! Conheci a Coneccta pelo site e gostaria de conversar com um especialista sobre as soluções para minha corretora.',
+  sinistros: 'Olá! Gostaria de saber mais sobre a Central de Sinistros da Coneccta.',
+  renovacoes: 'Olá! Tenho interesse em conhecer as soluções de gestão de renovações da Coneccta.',
+  backoffice: 'Olá! Gostaria de entender como o backoffice da Coneccta pode apoiar minha corretora.',
+  estrutura: 'Olá! Gostaria de saber mais sobre a estrutura e as soluções operacionais da Coneccta.',
+};
+const NAV = [['Início','inicio'],['Soluções','solucoes'],['Diferenciais','diferenciais'],['Como funciona','como-funciona'],['Estrutura','estrutura'],['Sobre','sobre'],['Contato','contato']];
+const CLIENTES = ['2024/10/Patrocinador_26','2024/09/Patrocinador_1','2024/09/Patrocinador_2','2024/09/Patrocinador_3','2024/09/Patrocinador_4','2024/09/Patrocinador_5','2024/09/Patrocinador_7','2024/09/Patrocinador_8','2024/09/Patrocinador_10','2024/09/Patrocinador_12','2024/09/Patrocinador_13','2024/09/Patrocinador_14','2024/09/Patrocinador_15','2024/09/Patrocinador_16','2026/03/Patrocinador_30-scaled','2026/03/Patrocinador_29-scaled','2026/03/Patrocinador_28-scaled'];
+const FAQ = [
+  ['O que é backoffice para corretoras de seguros?','É o conjunto de rotinas operacionais e administrativas que sustentam a corretora, como cotações, renovações, acompanhamento de sinistros e atendimento. Com um backoffice especializado, essas atividades são conduzidas por uma equipe externa dedicada.'],
+  ['Quais rotinas operacionais podem ser terceirizadas?','Entre as atividades que a Coneccta apoia estão cotações, renovações, atendimento ao segurado e gestão de sinistros. O escopo é definido conforme as necessidades de cada operação.'],
+  ['Como funciona o apoio à gestão de sinistros?','A Central de Sinistros acompanha os processos com uma equipe especializada e rotinas organizadas, contribuindo para um atendimento mais consistente ao segurado da corretora.'],
+  ['Como uma central de renovações pode ajudar a corretora?','Ela apoia a gestão e o acompanhamento das renovações, para que a corretora mantenha atenção contínua à carteira e aos segurados.'],
+  ['Corretoras pequenas podem contratar apoio operacional?','Sim. A Coneccta atende desde corretores individuais até grandes corretoras, com soluções adaptadas ao porte e às necessidades de cada uma.'],
+  ['Como a Coneccta organiza a integração dos serviços?','O processo começa pelo entendimento da operação, segue para a definição da solução e a integração das atividades conforme o escopo contratado, e continua com acompanhamento.'],
+];
+
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, scrolled:false, active:'inicio', menu:false, procP:0, sol:0, video:false, videoErr:false, fab:false };
+  procRef = React.createRef();
+
+  componentDidMount() {
+    this.rm = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) || this.props.animations === false;
+    this.onScroll = () => {
+      const y = window.scrollY, vh = window.innerHeight, s = {};
+      const sc = y > 24; if (sc !== this.state.scrolled) s.scrolled = sc;
+      const fab = y > vh * 0.9; if (fab !== this.state.fab) s.fab = fab;
+      let act = 'inicio';
+      for (const [, id] of NAV) { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= 140) act = id; }
+      if (act !== this.state.active) s.active = act;
+      const pr = document.getElementById('proc-track');
+      if (pr) { const r = pr.getBoundingClientRect(); let p = (vh * 0.7 - r.top) / Math.max(1, r.height * 0.85); p = Math.max(0, Math.min(1, p)); if (this.rm) p = r.top < vh ? 1 : 0; if (Math.abs(p - this.state.procP) > 0.01 || (p === 1 && this.state.procP !== 1)) s.procP = +p.toFixed(3); }
+      if (Object.keys(s).length) this.setState(s);
+    };
+    this.onResize = () => { this.setState({ w: window.innerWidth }); this.onScroll(); };
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ menu:false, video:false }); };
+    window.addEventListener('scroll', this.onScroll, { passive:true });
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('keydown', this.onKey);
+    this.onScroll();
+    this.loadTags();
+    requestAnimationFrame(() => this.setupReveal());
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); window.removeEventListener('keydown', this.onKey);
+    this.io && this.io.disconnect();
+  }
+  loadTags() {
+    const id = (this.props.gtmId || '').trim();
+    window.dataLayer = window.dataLayer || [];
+    if (!/^GTM-[A-Z0-9]+$/.test(id) || document.getElementById('gtm-js')) return;
+    window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    const s = document.createElement('script'); s.id = 'gtm-js'; s.async = true; s.src = 'https://www.googletagmanager.com/gtm.js?id=' + id; document.head.appendChild(s);
+  }
+  setupReveal() {
+    if (this.rm || !Element.prototype.animate) return;
+    const KF = {
+      up:[{opacity:0,transform:'translateY(28px)'},{opacity:1,transform:'none'}],
+      left:[{opacity:0,transform:'translateX(-24px)'},{opacity:1,transform:'none'}],
+      fade:[{opacity:0},{opacity:1}],
+      mask:[{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)'}],
+      maskx:[{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)'}],
+      growy:[{transform:'scaleY(0)'},{transform:'scaleY(1)'}],
+      draw:[{strokeDashoffset:'1'},{strokeDashoffset:'0'}],
+    };
+    const map = new Map();
+    const els = document.querySelectorAll('[data-reveal]');
+    els.forEach(el => {
+      const t = el.dataset.reveal; if (!KF[t]) return;
+      if (t === 'draw') el.style.strokeDasharray = '1';
+      const dur = +el.dataset.dur || (t.startsWith('mask') ? 1200 : 850);
+      const a = el.animate(KF[t], { duration:dur, delay:+el.dataset.delay || 0, easing:'cubic-bezier(.2,.7,.2,1)', fill:'both' });
+      a.pause();
+      if (el.dataset.hero) { a.play(); return; }
+      map.set(el, a);
+    });
+    this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const a = map.get(e.target); a && a.play(); this.io.unobserve(e.target); } }), { rootMargin:'0px 0px -8% 0px' });
+    map.forEach((a, el) => this.io.observe(el));
+    document.querySelectorAll('video[data-autoplay]').forEach(v => {
+      v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true;
+      const go = () => { const p = v.play(); p && p.catch(() => {}); };
+      go();
+      v.addEventListener('loadeddata', go, { once:true });
+      let manual = false;
+      new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { if (!manual) go(); } else v.pause(); }), { threshold:.25 }).observe(v);
+      const box = v.parentElement;
+      const tg = box.querySelector('[data-vid-toggle]'), sd = box.querySelector('[data-vid-sound]');
+      const sync = () => {
+        tg.querySelector('[data-ic-pause]').style.display = v.paused ? 'none' : '';
+        tg.querySelector('[data-ic-play]').style.display = v.paused ? '' : 'none';
+        tg.setAttribute('aria-label', v.paused ? 'Reproduzir vídeo' : 'Pausar vídeo');
+        sd.querySelector('[data-ic-muted]').style.display = v.muted ? '' : 'none';
+        sd.querySelector('[data-ic-sound]').style.display = v.muted ? 'none' : '';
+        sd.setAttribute('aria-label', v.muted ? 'Ativar som' : 'Desativar som');
+      };
+      ['play','pause','volumechange'].forEach(ev => v.addEventListener(ev, sync));
+      tg.addEventListener('click', () => { if (v.paused) { manual = false; go(); } else { manual = true; v.pause(); } });
+      sd.addEventListener('click', () => { v.muted = !v.muted; if (!v.muted && v.paused) go(); });
+      sync();
+    });
+  }
+  track(event, params) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event }, params));
+  }
+  waUrl(k) {
+    const n = String(this.props.whatsappNumber || '').replace(/\D/g, '');
+    return 'https://wa.me/' + n + '?text=' + encodeURIComponent(MSG[k] || MSG.geral);
+  }
+  wa(k, section, label, event, service) {
+    return { href: this.waUrl(k), click: () => this.track(event || 'whatsapp_click', { section, service: service || k, cta_label: label, destination: 'whatsapp' }) };
+  }
+  go(id) {
+    return e => {
+      if (e) e.preventDefault();
+      const el = document.getElementById(id); if (!el) return;
+      this.setState({ menu:false });
+      this.track('navigation_click', { section: id, cta_label: id, destination: '#' + id });
+      const top = id === 'inicio' ? 0 : el.getBoundingClientRect().top + window.scrollY - 71;
+      window.scrollTo({ top, behavior: this.rm ? 'auto' : 'smooth' });
+      try { history.replaceState(null, '', '#' + id); } catch (err) {}
+    };
+  }
+  renderVals() {
+    const { w, scrolled, active, menu, procP, sol, video, videoErr, fab } = this.state;
+    const desk = w >= 1080, mob = w < 720;
+    const solOn = desk;
+    const wa = {
+      header: this.wa('geral','header','Fale com um especialista'),
+      menu: this.wa('geral','menu_mobile','Fale com um especialista'),
+      hero: this.wa('geral','hero','Fale com um especialista','hero_cta_click'),
+      sinistros: this.wa('sinistros','solucoes','Conversar sobre sinistros','service_interest','sinistros'),
+      renovacoes: this.wa('renovacoes','solucoes','Conversar sobre renovações','service_interest','renovacoes'),
+      backoffice: this.wa('backoffice','solucoes','Conhecer o backoffice','service_interest','backoffice'),
+      estrutura: this.wa('estrutura','estrutura','Conversar sobre nossa estrutura'),
+      final: this.wa('geral','cta_final','Converse com um especialista','final_cta_click'),
+      footer: this.wa('geral','footer','Fale com um especialista'),
+      fab: this.wa('geral','floating_button','WhatsApp flutuante'),
+    };
+    const comp = [
+      { t:'Atendimento ao segurado', p:'Suporte no atendimento aos segurados da corretora, com processos organizados e comunicação consistente.', k:'geral', active:true },
+      { t:'Consultoria e suporte operacional', p:'Apoio na organização das rotinas e processos operacionais da corretora.', k:'geral', active:true },
+      { t:'Soluções personalizadas', p:'Escopos adaptados ao porte e às necessidades de cada operação, do corretor individual à grande corretora.', k:'geral', active:true },
+      { t:'CONECCTONE', p:'Plataforma que integra o ecossistema tecnológico da Coneccta.', anchor:'conecctone', active:true },
+      { t:'Gestão de pendências', p:'', k:'geral', active:false },
+      { t:'Cobranças', p:'', k:'geral', active:false },
+    ].filter(c => c.active).map((c, i) => c.anchor
+      ? { ...c, href:'#' + c.anchor, click:this.go(c.anchor), target:'_self', cta:'Conhecer', delay:i * 80 }
+      : { ...c, ...(() => { const x = this.wa(c.k,'solucoes_complementares','Saber mais','service_interest',c.t); return { href:x.href, click:x.click }; })(), target:'_blank', cta:'Saber mais', delay:i * 80 });
+    const pts = []; [10,38,66].forEach((y, r) => [10,39,68,98].forEach((x, c) => pts.push({ x, y, i: r * 4 + c })));
+    const lit = [0,1,5,6,10,11,7,3];
+    const boOn = sol === 2 || !solOn;
+    const boNodes = pts.map(p => { const k = lit.indexOf(p.i); const on = boOn && k >= 0; return { x:p.x, y:p.y, fill: on ? '#FA7921' : '#FFFFFF', stroke: on ? '#FA7921' : '#A1A1AA', delay: on ? k * 90 : 0 }; });
+    const steps = [
+      ['Entendimento da operação','Conhecemos a rotina, as demandas e as necessidades da sua corretora.'],
+      ['Definição da solução','Estruturamos uma proposta de apoio operacional adequada aos processos envolvidos.'],
+      ['Integração','Organizamos a implantação e o alinhamento das atividades conforme o escopo contratado.'],
+      ['Acompanhamento','A operação passa a contar com uma estrutura de suporte e acompanhamento.'],
+    ].map(([t, p], i) => { const on = procP >= (desk ? i / 3 * 0.98 : i / 4 + 0.02); return { n:'0' + (i + 1), t, p, bg: on ? '#FA7921' : '#FFFFFF', border: on ? '#FA7921' : '#D4D4D8', dot: on ? '#17171B' : '#D4D4D8', numColor: on ? '#C2560B' : '#71717A' }; });
+    return {
+      cfg: { ...CONFIG, mailto: 'mailto:' + CONFIG.email },
+      year: new Date().getFullYear(),
+      isDesk: desk, isNotDesk: !desk,
+      showHeaderCta: w >= 560,
+      headerBg: scrolled || menu ? 'rgba(23,23,27,.94)' : 'rgba(23,23,27,0)',
+      headerLine: scrolled ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,0)',
+      nav: NAV.map(([label, id], i) => ({ label, href:'#' + id, go:this.go(id), current: active === id ? 'true' : undefined, color: active === id ? '#FFFFFF' : '#A1A1AA', colorM: active === id ? '#FA7921' : '#FFFFFF', dot: active === id ? 1 : 0, n:'0' + (i + 1) })),
+      menuOpen: menu && !desk, menuOpenStr: String(menu), menuLabel: menu ? 'Fechar menu' : 'Abrir menu',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      bar1: menu ? 'translateY(3.75px) rotate(45deg)' : 'none',
+      bar2: menu ? 'translateY(-3.75px) rotate(-45deg)' : 'none',
+      goHome: this.go('inicio'), goSolucoes: this.go('solucoes'),
+      wa,
+      heroCols: desk ? 'minmax(0,1.25fr) minmax(0,.75fr)' : 'minmax(0,1fr)',
+      phoneCta: 'ou ligue ' + CONFIG.phone,
+      heroSvgRight: desk ? '-12%' : '-55%',
+      heroSvgTop: desk ? '4%' : '38%',
+      heroSvgOp: desk ? 0.9 : 0.5,
+      heroImgH: desk ? 'min(680px,72vh)' : (mob ? '420px' : '560px'),
+      splitCols: desk ? 'minmax(0,5fr) minmax(0,7fr)' : 'minmax(0,1fr)',
+      dores: [
+        ['Sobrecarga operacional','Demandas administrativas consomem tempo que poderia ser dedicado aos clientes e à expansão da carteira.'],
+        ['Processos que exigem acompanhamento','Sinistros e renovações precisam de organização, atenção e continuidade.'],
+        ['Dificuldade para ampliar a estrutura','Expandir uma operação interna exige planejamento, pessoas, processos e recursos.'],
+      ].map(([t, p], i) => ({ n:'0' + (i + 1), t, p, delay:i * 160, indent: desk ? (i * 56) + 'px' : '0px' })),
+      solDir: solOn ? 'row' : 'column',
+      solMinH: solOn ? '600px' : 'auto',
+      solFlex: [0,1,2].map(i => solOn ? (sol === i ? '2.1 1 0' : '1 1 0') : '1 1 auto'),
+      sol0: () => this.setState({ sol:0 }), sol1: () => this.setState({ sol:1 }), sol2: () => this.setState({ sol:2 }),
+      solRot: solOn && sol === 0 ? -24 : 0,
+      solDash: (solOn && sol !== 1) ? 0.72 : 0,
+      boNodes,
+      compCols: desk ? 'minmax(0,3fr) minmax(0,9fr)' : 'minmax(0,1fr)',
+      complementares: comp,
+      procRef: this.procRef, procP,
+      procCols: desk ? 'repeat(4,minmax(0,1fr))' : 'minmax(0,1fr)',
+      procGap: desk ? '32px' : '48px',
+      procPad: desk ? '60px 0 0 0' : '0 0 0 56px',
+      steps,
+      recursos: [['Telefonia com monitoramento','MÉTRICAS'],['Servidores físicos e virtuais','INFRA'],['Backups em nuvem','DADOS'],['Gestão de workflow por atividade','PROCESSOS'],['Plano de Continuidade de Negócios','BCP']].map(([t, tag], i) => ({ t, tag, delay:i * 90 })),
+      mosaicCols: desk ? 'minmax(0,1.25fr) minmax(0,1fr)' : 'minmax(0,1fr)',
+      mosaicRows: desk ? '300px 300px' : (mob ? '380px 240px 240px' : '480px 300px 300px'),
+      mosaicSpan: desk ? '1 / span 2' : 'auto',
+      gestao: ['Sistemas de telefonia com monitoramento e relatórios de métricas.','Servidores físicos e virtuais com backups em nuvem.','Sistemas de gerenciamento de workflow para cada atividade.','Departamentos segmentados e estruturados, com treinamentos constantes para os colaboradores.'],
+      bcp: ['Nobreaks em todas as estações.','Gerador de energia para tempo indeterminado.','Ambientes completos de contingência, com linhas telefônicas, computadores e sistemas.'],
+      videoRatio: mob ? '4/5' : '16/9',
+      videoOpen: video, videoOk: !videoErr, videoErr,
+      openVideo: () => { this.setState({ video:true }); },
+      closeVideo: () => this.setState({ video:false }),
+      stop: e => e.stopPropagation(),
+      videoFail: () => this.setState({ videoErr:true }),
+      videoPlay: () => { if (!this._vp) { this._vp = 1; this.track('video_play', { section:'estrutura', cta_label:'Vídeo institucional', destination:'video' }); } },
+      sobreCols: desk ? 'minmax(0,1.2fr) minmax(0,1fr)' : 'minmax(0,1fr)',
+      setores: ['Corretoras de Seguros','Seguradoras','Bancos','Cooperativas de Crédito'],
+      oneCols: desk ? 'minmax(0,5fr) minmax(0,7fr)' : 'minmax(0,1fr)',
+      clientes: CLIENTES.map((p, i) => ({ src:'https://www.coneccta.com.br/wp-content/uploads/' + p + '.png', alt:'Logomarca de cliente da Coneccta', delay:(i % 6) * 60 })),
+      showFaq: this.props.showFaq !== false,
+      faq: FAQ.map(([q, a]) => ({ q, a })),
+      fab: fab && !menu && !video,
+    };
+  }
+}
+</script>
+</body>
+</html>

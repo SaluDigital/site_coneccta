@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="Coneccta">
+  <rect width="48" height="48" rx="12" fill="#FF9C3A"/>
+  <path d="M31.8 14.8a12 12 0 1 0 0 18.4" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+  <path d="M21 24h15" fill="none" stroke="#FEFEFE" stroke-width="4" stroke-linecap="round"/>
+</svg>
