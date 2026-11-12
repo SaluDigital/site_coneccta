@@ -363,11 +363,11 @@ summary::-webkit-details-marker{display:none}
       </div>
     </div>
 
-    <div data-reveal="mask" role="button" tabindex="0" aria-label="Reproduzir vídeo institucional da Coneccta" onclick="if(this.dataset.on)return;this.dataset.on=1;this.innerHTML='<iframe src=&quot;https://www.youtube.com/embed/x4qwo7EGNnc?autoplay=1&amp;rel=0&quot; title=&quot;Vídeo institucional da Coneccta&quot; allow=&quot;autoplay; encrypted-media; picture-in-picture; fullscreen&quot; allowfullscreen style=&quot;position:absolute;inset:0;width:100%;height:100%;border:0&quot;></iframe>';this.style.cursor='default'" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" style="margin-top:clamp(64px,8vw,112px);position:relative;aspect-ratio:{{ videoRatio }};border-radius:20px;overflow:hidden;background:#25252A;cursor:pointer">
+    <div data-reveal="mask" onClick="{{ openVideo }}" style="margin-top:clamp(64px,8vw,112px);position:relative;aspect-ratio:{{ videoRatio }};border-radius:20px;overflow:hidden;background:#25252A;cursor:pointer">
       <img src="https://i.ytimg.com/vi/x4qwo7EGNnc/maxresdefault.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
       <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,23,27,.78) 0%,rgba(23,23,27,.2) 60%,rgba(23,23,27,0) 100%);pointer-events:none"></div>
       <div style="position:absolute;left:clamp(20px,4vw,56px);bottom:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;pointer-events:none">
-        <button type="button" aria-label="Assistir ao vídeo institucional da Coneccta" style="pointer-events:auto;width:clamp(64px,7vw,88px);height:clamp(64px,7vw,88px);border-radius:50%;border:0;background:#FA7921;color:#17171B;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s" style-hover="transform:scale(1.06)"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"></path></svg></button>
+        <button type="button" onClick="{{ openVideo }}" aria-label="Assistir ao vídeo institucional da Coneccta" style="pointer-events:auto;width:clamp(64px,7vw,88px);height:clamp(64px,7vw,88px);border-radius:50%;border:0;background:#FA7921;color:#17171B;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s" style-hover="transform:scale(1.06)"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"></path></svg></button>
         <div>
           <p style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FA7921">VÍDEO INSTITUCIONAL</p>
           <p style="margin:0;font-size:clamp(1.2rem,2vw,1.8rem);font-weight:800;letter-spacing:-.025em;color:#FFFFFF">Conheça a estrutura da Coneccta por dentro.</p>
@@ -383,17 +383,7 @@ summary::-webkit-details-marker{display:none}
 <sc-if value="{{ videoOpen }}" hint-placeholder-val="{{ false }}">
   <div role="dialog" aria-modal="true" aria-label="Vídeo institucional" onClick="{{ closeVideo }}" style="position:fixed;inset:0;z-index:80;background:rgba(12,12,14,.92);display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,64px)">
     <div onClick="{{ stop }}" style="position:relative;width:100%;max-width:1200px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#25252A;display:flex;align-items:center;justify-content:center">
-      <sc-if value="{{ videoOk }}" hint-placeholder-val="{{ true }}">
-        <video controls="" playsInline="" preload="metadata" onError="{{ videoFail }}" onPlay="{{ videoPlay }}" style="width:100%;height:100%;display:block;background:#000">
-          <source src="assets/videos/institucional-coneccta.mp4" type="video/mp4" onError="{{ videoFail }}"></source>
-        </video>
-      </sc-if>
-      <sc-if value="{{ videoErr }}" hint-placeholder-val="{{ false }}">
-        <div style="text-align:center;padding:32px;color:#FFFFFF">
-          <p style="margin:0 0 8px;font-size:1.5rem;font-weight:800;letter-spacing:-.02em">Vídeo institucional em breve.</p>
-          <p style="margin:0;font-size:14px;color:#A1A1AA">Arquivo esperado: assets/videos/institucional-coneccta.mp4</p>
-        </div>
-      </sc-if>
+      <iframe src="https://www.youtube.com/embed/x4qwo7EGNnc?autoplay=1&rel=0" title="Vídeo institucional da Coneccta" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
       <button type="button" onClick="{{ closeVideo }}" aria-label="Fechar vídeo" style="position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(23,23,27,.8);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     </div>
   </div>
