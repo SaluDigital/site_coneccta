@@ -70,13 +70,13 @@ summary::-webkit-details-marker{display:none}
   <div id="menu-mobile" role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;top:72px;left:0;right:0;bottom:0;z-index:49;background:#17171B;color:#FFFFFF;overflow-y:auto;padding:24px clamp(20px,5vw,40px) 40px;display:flex;flex-direction:column;gap:32px">
     <nav aria-label="Navegação mobile" style="display:flex;flex-direction:column">
       <sc-for list="{{ nav }}" as="item" hint-placeholder-count="8">
-        <a href="{{ item.href }}" onClick="{{ item.go }}" style="display:flex;align-items:center;justify-content:space-between;min-height:58px;border-bottom:1px solid rgba(255,255,255,.1);font-size:26px;font-weight:700;letter-spacing:-.02em;color:{{ item.colorM }}">
+        <a href="{{ item.href }}" onClick="{{ item.go }}" style="display:flex;align-items:center;justify-content:space-between;min-height:52px;border-bottom:1px solid rgba(255,255,255,.1);font-size:20px;font-weight:700;letter-spacing:-.02em;color:{{ item.colorM }}">
           <span>{{ item.label }}</span>
           <span style="font-size:12px;font-weight:600;color:#71717A;letter-spacing:.08em">{{ item.n }}</span>
         </a>
       </sc-for>
     </nav>
-    <a href="{{ wa.menu.href }}" onClick="{{ wa.menu.click }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:56px;border-radius:12px;background:#FA7921;color:#17171B;font-size:16px;font-weight:700">Fale com um especialista</a>
+    <a href="{{ wa.menu.href }}" onClick="{{ wa.menu.click }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:64px;flex-shrink:0;border-radius:14px;background:#FA7921;color:#17171B;font-size:18px;font-weight:700">Fale com um especialista</a>
     <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:#A1A1AA">
       <span>{{ cfg.phone }}</span><span>{{ cfg.email }}</span><span>{{ cfg.city }}</span>
     </div>
