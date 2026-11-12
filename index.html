@@ -109,7 +109,7 @@ summary::-webkit-details-marker{display:none}
       </div>
     </div>
     <div data-reveal="mask" data-hero="1" data-delay="550" data-dur="1400" style="position:relative;min-width:0;height:{{ heroImgH }};border-radius:clamp(120px,16vw,260px) 14px 0 0;overflow:hidden;background:#25252A">
-      <img src="assets/images/hero.png" alt="Equipe de backoffice da Coneccta" width="1600" height="2000" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block">
+      <img src="assets/images/escritorio.png" alt="Escritório da Coneccta" width="1600" height="2000" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block">
     </div>
   </div>
   <div style="position:relative;border-top:1px solid rgba(255,255,255,.1)">
@@ -367,7 +367,7 @@ summary::-webkit-details-marker{display:none}
       <img src="https://i.ytimg.com/vi/x4qwo7EGNnc/maxresdefault.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
       <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,23,27,.78) 0%,rgba(23,23,27,.2) 60%,rgba(23,23,27,0) 100%);pointer-events:none"></div>
       <div style="position:absolute;left:clamp(20px,4vw,56px);bottom:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;pointer-events:none">
-        <button type="button" onClick="{{ openVideo }}" aria-label="Assistir ao vídeo institucional da Coneccta" style="pointer-events:auto;width:clamp(64px,7vw,88px);height:clamp(64px,7vw,88px);border-radius:50%;border:0;background:#FA7921;color:#17171B;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s" style-hover="transform:scale(1.06)"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"></path></svg></button>
+        <button type="button" aria-label="Assistir ao vídeo institucional da Coneccta" style="pointer-events:auto;width:clamp(64px,7vw,88px);height:clamp(64px,7vw,88px);border-radius:50%;border:0;background:#FA7921;color:#17171B;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s" style-hover="transform:scale(1.06)"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"></path></svg></button>
         <div>
           <p style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FA7921">VÍDEO INSTITUCIONAL</p>
           <p style="margin:0;font-size:clamp(1.2rem,2vw,1.8rem);font-weight:800;letter-spacing:-.025em;color:#FFFFFF">Conheça a estrutura da Coneccta por dentro.</p>
@@ -519,7 +519,7 @@ summary::-webkit-details-marker{display:none}
       </div>
       <nav aria-label="Rodapé" style="flex:1 1 180px">
         <h2 style="margin:0 0 18px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">NAVEGAÇÃO</h2>
-        <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px">
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
           <sc-for list="{{ nav }}" as="item" hint-placeholder-count="8">
             <li><a href="{{ item.href }}" onClick="{{ item.go }}" style="font-size:15px;color:#C4C4CC" style-hover="color:#FFFFFF">{{ item.label }}</a></li>
           </sc-for>
@@ -545,7 +545,6 @@ summary::-webkit-details-marker{display:none}
     </div>
     <div style="padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:13px;color:#8A8A93">
       <span>CONECCTA VIRTUALE LTDA · CNPJ 04.590.705/0001-67</span>
-      <span>Política de privacidade (em preparação)</span>
       <span>©{{ year }}, Coneccta. Todos os direitos reservados.</span>
       <span>Desenvolvido por SaluDigital®</span>
     </div>
