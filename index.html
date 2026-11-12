@@ -513,37 +513,37 @@ summary::-webkit-details-marker{display:none}
 <footer data-screen-label="13 Rodapé" style="background:#111114;color:#C4C4CC;padding:clamp(72px,8vw,112px) 0 32px">
   <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
     <div style="display:flex;flex-wrap:wrap;gap:48px clamp(40px,5vw,80px);padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.1)">
-      <div style="flex:1.4 1 300px;display:flex;flex-direction:column;gap:20px">
+      <div style="flex:1.4 1 300px;display:flex;flex-direction:column;gap:20px;align-items:{{ footAi }};text-align:{{ footTa }}">
         <img src="assets/images/logo/coneccta-branca.png" alt="Coneccta" width="200" height="25" loading="lazy" style="width:200px;height:auto;display:block">
         <p style="margin:0;max-width:320px;font-size:1.125rem;line-height:1.5;font-weight:700;color:#FFFFFF;letter-spacing:-.01em">Inteligência e Controle para Corretores de Seguros.</p>
       </div>
-      <nav aria-label="Rodapé" style="flex:1 1 180px">
+      <nav aria-label="Rodapé" style="flex:1 1 180px;text-align:{{ footTa }}">
         <h2 style="margin:0 0 18px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">NAVEGAÇÃO</h2>
-        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:{{ footAi }};gap:10px">
           <sc-for list="{{ nav }}" as="item" hint-placeholder-count="8">
             <li><a href="{{ item.href }}" onClick="{{ item.go }}" style="font-size:15px;color:#C4C4CC" style-hover="color:#FFFFFF">{{ item.label }}</a></li>
           </sc-for>
         </ul>
       </nav>
-      <div style="flex:1 1 260px">
+      <div style="flex:1 1 260px;text-align:{{ footTa }}">
         <h2 style="margin:0 0 18px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">CONTATO</h2>
-        <address style="font-style:normal;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.5">
+        <address style="font-style:normal;display:flex;flex-direction:column;align-items:{{ footAi }};gap:10px;font-size:15px;line-height:1.5">
           <a href="{{ wa.footer.href }}" onClick="{{ wa.footer.click }}" target="_blank" rel="noopener" style="color:#FFFFFF;font-weight:700" style-hover="color:#FA7921">Fale com um especialista</a>
           <a href="{{ cfg.tel }}" style="color:#C4C4CC" style-hover="color:#FFFFFF">{{ cfg.phone }}</a>
           <a href="{{ cfg.mailto }}" style="color:#C4C4CC" style-hover="color:#FFFFFF">{{ cfg.email }}</a>
           <span>{{ cfg.address }}</span>
         </address>
       </div>
-      <div style="flex:1 1 160px">
+      <div style="flex:1 1 160px;text-align:{{ footTa }}">
         <h2 style="margin:0 0 18px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#71717A">REDES</h2>
-        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15px">
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:{{ footAi }};gap:10px;font-size:15px">
           <li><a href="https://www.instagram.com/coneccta_virtuale" target="_blank" rel="noopener" style="color:#C4C4CC" style-hover="color:#FFFFFF">Instagram</a></li>
           <li><a href="https://www.facebook.com/conecctav" target="_blank" rel="noopener" style="color:#C4C4CC" style-hover="color:#FFFFFF">Facebook</a></li>
           <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSc2D4iEuvpXHR8pjPGod9RyMmQmKJJkyoxG1mwRe2_tRxkFpg/viewform" target="_blank" rel="noopener" style="color:#C4C4CC" style-hover="color:#FFFFFF">Trabalhe conosco</a></li>
         </ul>
       </div>
     </div>
-    <div style="padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:13px;color:#8A8A93">
+    <div style="padding-top:28px;display:flex;flex-wrap:wrap;justify-content:{{ footJc }};text-align:{{ footTa }};gap:12px 32px;font-size:13px;color:#8A8A93">
       <span>CONECCTA VIRTUALE LTDA · CNPJ 04.590.705/0001-67</span>
       <span>©{{ year }}, Coneccta. Todos os direitos reservados.</span>
       <span>Desenvolvido por SaluDigital®</span>
@@ -774,6 +774,7 @@ class Component extends DCLogic {
       gestao: ['Sistemas de telefonia com monitoramento e relatórios de métricas.','Servidores físicos e virtuais com backups em nuvem.','Sistemas de gerenciamento de workflow para cada atividade.','Departamentos segmentados e estruturados, com treinamentos constantes para os colaboradores.'],
       bcp: ['Nobreaks em todas as estações.','Gerador de energia para tempo indeterminado.','Ambientes completos de contingência, com linhas telefônicas, computadores e sistemas.'],
       videoRatio: mob ? '4/5' : '16/9',
+      footTa: mob ? 'center' : 'left', footAi: mob ? 'center' : 'flex-start', footJc: mob ? 'center' : 'space-between',
       videoOpen: video, videoOk: !videoErr, videoErr,
       openVideo: () => { this.setState({ video:true }); },
       closeVideo: () => this.setState({ video:false }),
